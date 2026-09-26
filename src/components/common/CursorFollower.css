@@ -1,0 +1,58 @@
+/* ==========================================================================
+   CURSOR FOLLOWER STYLES
+   Smooth pointer dot and lag ring in butter yellow and cobalt
+   ========================================================================== */
+
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-charcoal);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  margin-top: -4px;
+  margin-left: -4px;
+  transition: transform 0.05s ease-out, width 0.2s, height 0.2s, background-color 0.2s;
+  will-change: transform;
+}
+
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid var(--color-yellow-dark);
+  background: rgba(254, 229, 128, 0.15);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  margin-top: -17px;
+  margin-left: -17px;
+  will-change: transform;
+  transition: width 0.25s var(--ease-spring), height 0.25s var(--ease-spring), border-color 0.25s, background-color 0.25s;
+}
+
+.custom-cursor-dot.dot-hover {
+  background-color: var(--color-cobalt);
+  transform: scale(1.6);
+}
+
+.custom-cursor-ring.ring-hover {
+  width: 52px;
+  height: 52px;
+  margin-top: -26px;
+  margin-left: -26px;
+  border-color: var(--color-cobalt);
+  background: rgba(24, 66, 184, 0.1);
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .custom-cursor-dot,
+  .custom-cursor-ring {
+    display: none !important;
+  }
+}

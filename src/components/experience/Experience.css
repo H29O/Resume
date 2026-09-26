@@ -1,0 +1,186 @@
+/* ==========================================================================
+   EXPERIENCE COMPONENT STYLES
+   Timeline structure showcasing editorial & organizational leadership
+   ========================================================================== */
+
+.experience-section {
+  background-color: var(--color-bg-base);
+}
+
+.experience-timeline {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--space-xl) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.timeline-track-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--color-charcoal) 0,
+    var(--color-charcoal) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  gap: var(--space-xl);
+  align-items: flex-start;
+  padding-left: 10px;
+}
+
+.timeline-node {
+  position: relative;
+  z-index: 2;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-yellow);
+  border: 2px solid var(--color-charcoal);
+  box-shadow: 2px 2px 0px var(--color-charcoal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 24px;
+}
+
+.timeline-node-inner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-charcoal);
+}
+
+.timeline-item:hover .timeline-node {
+  background: var(--color-cobalt);
+  transform: scale(1.15);
+}
+
+.timeline-item:hover .timeline-node-inner {
+  background: #FFFFFF;
+}
+
+/* Experience Card */
+.experience-card {
+  flex: 1;
+  background: var(--color-bg-surface);
+  border: 2px solid var(--color-charcoal);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-tactile);
+  transition: all var(--transition-normal);
+}
+
+.experience-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-tactile-hover);
+}
+
+.experience-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.exp-badge {
+  margin-bottom: var(--space-2xs);
+  font-size: 0.85rem;
+}
+
+.exp-role {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  color: var(--color-charcoal);
+  line-height: 1.1;
+}
+
+.exp-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.exp-org {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-cobalt);
+  letter-spacing: 0.04em;
+}
+
+.exp-institution {
+  font-size: 0.95rem;
+  color: var(--color-charcoal-muted);
+}
+
+.exp-period {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-charcoal-subtle);
+  background: var(--color-bg-subtle);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
+/* Bullets */
+.exp-bullets-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-charcoal-muted);
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-sm);
+}
+
+.exp-bullets-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.exp-bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 1rem;
+  color: var(--color-charcoal);
+  line-height: 1.6;
+}
+
+.bullet-check-icon {
+  color: var(--color-cobalt);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+@media (max-width: 600px) {
+  .timeline-track-line {
+    display: none;
+  }
+  .timeline-node {
+    display: none;
+  }
+  .timeline-item {
+    padding-left: 0;
+  }
+}

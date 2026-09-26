@@ -1,0 +1,168 @@
+/* ==========================================================================
+   CONTACT COMPONENT STYLES
+   High-contrast closing statement with interactive channels
+   ========================================================================== */
+
+.contact-section {
+  background-color: var(--color-bg-base);
+  border-top: 2px solid var(--color-charcoal);
+  padding-bottom: var(--space-4xl);
+}
+
+.contact-statement-wrapper {
+  max-width: 860px;
+  margin-bottom: var(--space-3xl);
+}
+
+.contact-pill {
+  margin-bottom: var(--space-sm);
+}
+
+.contact-statement {
+  font-size: clamp(3rem, 6.5vw, 5.5rem);
+  line-height: 0.95;
+  color: var(--color-charcoal);
+  margin-bottom: var(--space-md);
+  text-transform: uppercase;
+}
+
+.contact-subtitle {
+  font-size: 1.15rem;
+  color: var(--color-charcoal-muted);
+  line-height: 1.6;
+  max-width: 680px;
+  margin-bottom: var(--space-xl);
+}
+
+/* Fast Email Copy Bar */
+.email-copy-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-md);
+  background: var(--color-bg-surface);
+  border: 2px solid var(--color-charcoal);
+  border-radius: var(--radius-pill);
+  padding: 6px 6px 6px 20px;
+  box-shadow: var(--shadow-tactile);
+  flex-wrap: wrap;
+}
+
+.email-display {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-charcoal);
+  letter-spacing: 0.04em;
+}
+
+.copy-email-btn {
+  padding: 10px 22px;
+  font-size: 0.95rem;
+}
+
+.copied-btn {
+  background: #10B981;
+  color: #FFFFFF;
+  border-color: var(--color-charcoal);
+}
+
+/* Grid of Channels */
+.contact-links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
+.contact-link-card {
+  background: var(--color-bg-surface);
+  border: 2px solid var(--color-charcoal);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-tactile);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  color: var(--color-charcoal);
+}
+
+.contact-link-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-tactile-hover);
+  border-color: var(--color-cobalt);
+}
+
+.contact-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contact-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--color-yellow-light);
+  border: 1.5px solid var(--color-charcoal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-charcoal);
+}
+
+.card-cobalt .contact-icon-box {
+  background: var(--color-cobalt-subtle);
+  color: var(--color-cobalt);
+}
+
+.contact-card-arrow {
+  color: var(--color-charcoal-muted);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.contact-link-card:hover .contact-card-arrow {
+  transform: translate(3px, -3px);
+  color: var(--color-cobalt);
+}
+
+.contact-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-card-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-cobalt);
+  letter-spacing: 0.08em;
+}
+
+.contact-card-value {
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  color: var(--color-charcoal);
+  line-height: 1.1;
+}
+
+.contact-card-desc {
+  font-size: 0.9rem;
+  color: var(--color-charcoal-muted);
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .contact-links-grid {
+    grid-template-columns: 1fr;
+  }
+  .email-copy-bar {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .copy-email-btn {
+    width: 100%;
+  }
+}

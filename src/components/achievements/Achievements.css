@@ -1,0 +1,108 @@
+/* ==========================================================================
+   ACHIEVEMENTS COMPONENT STYLES
+   Hackathon and competition accolades
+   ========================================================================== */
+
+.achievements-section {
+  background-color: var(--color-bg-base);
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+
+.achievement-card {
+  background: var(--color-bg-surface);
+  border: 2px solid var(--color-charcoal);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-tactile);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  transition: all var(--transition-normal);
+}
+
+.achievement-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-tactile-hover);
+  border-color: var(--color-cobalt);
+}
+
+.achievement-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2xs);
+}
+
+.achievement-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-yellow);
+  border: 2px solid var(--color-charcoal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-charcoal);
+  box-shadow: var(--shadow-tactile-sm);
+}
+
+.achievement-year {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-charcoal-muted);
+}
+
+.achievement-tag {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  padding: 2px 10px;
+}
+
+.achievement-title {
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  color: var(--color-charcoal);
+  line-height: 1.15;
+  margin-top: 4px;
+}
+
+.achievement-result-box {
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: var(--space-xs) 0;
+}
+
+.result-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-cobalt);
+  letter-spacing: 0.08em;
+}
+
+.result-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-charcoal);
+  letter-spacing: 0.04em;
+}
+
+.achievement-desc {
+  font-size: 0.95rem;
+  color: var(--color-charcoal-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+}

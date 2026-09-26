@@ -1,0 +1,210 @@
+/* ==========================================================================
+   RESUME COMPONENT STYLES
+   Direct access to authoritative resume PDF and in-app viewer
+   ========================================================================== */
+
+.resume-section {
+  background-color: var(--color-bg-base);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.resume-banner-card {
+  background: var(--color-bg-surface);
+  border: 2px solid var(--color-charcoal);
+  border-radius: var(--radius-xl);
+  padding: clamp(var(--space-xl), 4vw, var(--space-2xl));
+  box-shadow: var(--shadow-tactile-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+  transition: transform var(--transition-normal);
+}
+
+.resume-banner-card:hover {
+  transform: translateY(-2px);
+}
+
+.resume-card-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  flex: 1;
+  min-width: 320px;
+}
+
+.resume-doc-icon-wrapper {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-lg);
+  background: var(--color-yellow);
+  border: 2px solid var(--color-charcoal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-charcoal);
+  box-shadow: var(--shadow-tactile-sm);
+  flex-shrink: 0;
+}
+
+.resume-info-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.resume-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-cobalt);
+}
+
+.status-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-cobalt);
+}
+
+.resume-doc-title {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  color: var(--color-charcoal);
+  line-height: 1.1;
+}
+
+.resume-doc-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-charcoal-muted);
+  max-width: 580px;
+  line-height: 1.5;
+}
+
+.resume-card-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* Modal Overlay */
+.resume-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(23, 22, 21, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+}
+
+.resume-modal-content {
+  background: var(--color-bg-base);
+  border: 3px solid var(--color-charcoal);
+  border-radius: var(--radius-xl);
+  width: 100%;
+  max-width: 900px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-tactile-lg);
+  overflow: hidden;
+  animation: modal-enter 0.25s var(--ease-spring);
+}
+
+@keyframes modal-enter {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.resume-modal-header {
+  padding: 16px 24px;
+  background: var(--color-bg-surface);
+  border-bottom: 2px solid var(--color-charcoal);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-title-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-icon {
+  color: var(--color-cobalt);
+}
+
+.modal-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-charcoal);
+}
+
+.modal-actions-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.modal-btn {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-charcoal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  background: var(--color-yellow);
+}
+
+.resume-iframe-wrapper {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  background: #525659;
+}
+
+.resume-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .resume-card-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+  .resume-card-actions .btn {
+    width: 100%;
+  }
+}
