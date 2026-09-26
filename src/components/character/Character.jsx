@@ -21,12 +21,10 @@ export default function Character({
   const targetGaze = useRef({ x: 0, y: 0 });
   const rawCursorGaze = useRef({ x: 0, y: 0 });
 
-  // Expressions & toasts
+  // Expressions
   const [isBlinking, setIsBlinking] = useState(false);
   const [isGrinning, setIsGrinning] = useState(false);
   const [isDockedState, setIsDockedState] = useState(false);
-  const [interactionToast, setInteractionToast] = useState(null);
-  const toastTimeoutRef = useRef(null);
   const grinTimeoutRef = useRef(null);
 
   // Sync smile with global mood
@@ -40,7 +38,7 @@ export default function Character({
     }
   }, [characterMood]);
 
-  // Click & tap handler: triggers full-face smile
+  // Click & tap handler: triggers full-face grin reaction only (zero text messages)
   const handleCharacterClick = useCallback((e) => {
     if (!interactive) return;
 
@@ -55,21 +53,6 @@ export default function Character({
     grinTimeoutRef.current = setTimeout(() => {
       setIsGrinning(false);
     }, 1600);
-
-    const friendlyMessages = [
-      "Hey! Thanks for visiting my portfolio! ✨",
-      "I'm Heet — B.Tech IT student & developer!",
-      "Exploring full-stack & backend systems!",
-      "Feel free to check out Ripple and Nirvana below 🚀",
-      "Ready to build something awesome together!"
-    ];
-    const msg = friendlyMessages[Math.floor(Math.random() * friendlyMessages.length)];
-    setInteractionToast(msg);
-
-    if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
-    toastTimeoutRef.current = setTimeout(() => {
-      setInteractionToast(null);
-    }, 3200);
   }, [interactive, triggerCelebration]);
 
   // Symmetrical natural blinking (both eyes synchronous, zero winks)
@@ -185,11 +168,11 @@ export default function Character({
         const isMobile = window.innerWidth <= 768;
         const isTablet = window.innerWidth <= 1024 && !isMobile;
 
-        // BOTTOM-RIGHT destination dimensions & positioning
-        const dockWidth = isMobile ? 74 : (isTablet ? 96 : 118);
+        // BOTTOM-RIGHT destination dimensions & positioning (moderately increased for clear visibility)
+        const dockWidth = isMobile ? 94 : (isTablet ? 124 : 154);
         const dockHeight = dockWidth / (1624 / 1496);
-        const dockRight = isMobile ? 16 : Math.min(48, Math.max(24, window.innerWidth * 0.032));
-        const dockBottom = isMobile ? 20 : Math.min(48, Math.max(24, window.innerHeight * 0.042));
+        const dockRight = isMobile ? 16 : Math.min(44, Math.max(20, window.innerWidth * 0.026));
+        const dockBottom = isMobile ? 20 : Math.min(44, Math.max(22, window.innerHeight * 0.036));
         const dockLeft = window.innerWidth - dockRight - dockWidth;
         const dockTop = window.innerHeight - dockBottom - dockHeight;
 
@@ -355,9 +338,9 @@ export default function Character({
       className={containerClasses}
       style={scrollCompanion ? { position: 'fixed', opacity: 0 } : undefined}
       onClick={handleCharacterClick}
-      title={interactive ? "Click me to smile! 😊" : undefined}
+      title={interactive ? "CLICK ME" : undefined}
       role={interactive ? "button" : "img"}
-      aria-label="Interactive character of Heet Oswal"
+      aria-label={interactive ? "CLICK ME" : "Interactive character of Heet Oswal"}
       tabIndex={interactive ? 0 : -1}
       onKeyDown={(e) => {
         if (interactive && (e.key === 'Enter' || e.key === ' ')) {
@@ -365,14 +348,6 @@ export default function Character({
         }
       }}
     >
-      {/* Speech Toast Bubble */}
-      {interactionToast && (
-        <div className="character-speech-bubble" role="status">
-          <span>{interactionToast}</span>
-          <div className="speech-tail" />
-        </div>
-      )}
-
       {/* 3D Tilting Character Wrapper */}
       <div
         ref={headWrapperRef}
