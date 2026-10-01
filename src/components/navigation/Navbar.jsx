@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useGaze } from '../../hooks/useGaze';
 import { navLinks, personalInfo } from '../../data/portfolioData';
 import { ArrowUpRight, Menu, X, FileText } from 'lucide-react';
 import './Navbar.css';
@@ -7,7 +6,6 @@ import './Navbar.css';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { setGazeTarget, clearGazeTarget, triggerGrin } = useGaze();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,16 +15,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleLinkMouseEnter = (e, label) => {
-    if (window.scrollY > 40) return; // Never distract or glitch character while scrolled
-    const rect = e.currentTarget.getBoundingClientRect();
-    setGazeTarget({
-      x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2,
-      label
-    });
-  };
-
   return (
     <header className={`navbar-wrapper ${scrolled ? 'navbar-scrolled' : ''}`}>
       <div className="container-wide navbar-inner">
@@ -34,13 +22,6 @@ export default function Navbar() {
         <a
           href="#"
           className="nav-logo"
-          onMouseEnter={(e) => {
-            if (window.scrollY <= 40) {
-              handleLinkMouseEnter(e, 'HEET');
-              triggerGrin('grin', 1200);
-            }
-          }}
-          onMouseLeave={clearGazeTarget}
           aria-label="Heet Oswal - Back to top"
         >
           <span className="logo-text font-display">HEET</span>
@@ -55,8 +36,6 @@ export default function Navbar() {
               key={link.id}
               href={link.href}
               className="nav-link font-ui"
-              onMouseEnter={(e) => handleLinkMouseEnter(e, link.label)}
-              onMouseLeave={clearGazeTarget}
             >
               <span className="nav-link-text">{link.label}</span>
               <span className="nav-link-indicator" />
@@ -71,8 +50,6 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-outline nav-resume-btn font-ui"
-            onMouseEnter={(e) => handleLinkMouseEnter(e, 'RESUME')}
-            onMouseLeave={clearGazeTarget}
           >
             <FileText size={16} />
             <span>RESUME</span>

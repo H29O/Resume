@@ -1,22 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { experienceData } from '../../data/portfolioData';
-import { useGaze } from '../../hooks/useGaze';
 import { CheckCircle2, Building, Calendar } from 'lucide-react';
 import './Experience.css';
 
 export default function Experience() {
-  const { setGazeTarget, clearGazeTarget } = useGaze();
-
-  const handleCardHover = (e, label) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setGazeTarget({
-      x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2,
-      label
-    });
-  };
-
   return (
     <section className="experience-section section-wrapper" id="experience">
       <div className="container">
@@ -43,8 +31,6 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              onMouseEnter={(e) => handleCardHover(e, exp.role)}
-              onMouseLeave={clearGazeTarget}
             >
               {/* Visual Node */}
               <div className="timeline-node">

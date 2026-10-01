@@ -1,22 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { achievementsData } from '../../data/portfolioData';
-import { useGaze } from '../../hooks/useGaze';
 import { Trophy, Award, Flame } from 'lucide-react';
 import './Achievements.css';
 
 export default function Achievements() {
-  const { setGazeTarget, clearGazeTarget } = useGaze();
-
-  const handleCardHover = (e, label) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setGazeTarget({
-      x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2,
-      label
-    });
-  };
-
   return (
     <section className="achievements-section section-wrapper" id="achievements">
       <div className="container">
@@ -41,8 +29,6 @@ export default function Achievements() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.15 }}
-              onMouseEnter={(e) => handleCardHover(e, item.title)}
-              onMouseLeave={clearGazeTarget}
             >
               <div className="achievement-card-top">
                 <div className="achievement-icon-circle">

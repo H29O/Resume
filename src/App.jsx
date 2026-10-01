@@ -1,7 +1,5 @@
 import React from 'react';
-import { GazeProvider } from './context/GazeContext';
 import Navbar from './components/navigation/Navbar';
-import Character from './components/character/Character';
 import Hero from './components/hero/Hero';
 import About from './components/about/About';
 import Experience from './components/experience/Experience';
@@ -16,27 +14,22 @@ import './App.css';
 
 export default function App() {
   return (
-    <GazeProvider>
-      <div className="portfolio-app">
-        <CursorFollower />
-        <Navbar />
+    <div className="portfolio-app">
+      <CursorFollower />
+      <Navbar />
 
-        {/* Living Character Companion (Hero center -> Top-right on scroll) */}
-        <Character scrollCompanion={true} size="hero" showStatusBadge={false} interactive={true} />
+      <main id="main-content">
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Achievements />
+        <ResumeSection />
+        <Contact />
+      </main>
 
-        <main id="main-content">
-          <Hero />
-          <About />
-          <Experience />
-          <Projects />
-          <Skills />
-          <Achievements />
-          <ResumeSection />
-          <Contact />
-        </main>
-
-        <Footer />
-      </div>
-    </GazeProvider>
+      <Footer />
+    </div>
   );
 }

@@ -22,7 +22,7 @@ export default function CursorFollower() {
 
       // Check if hovering interactive element
       const targetEl = e.target;
-      const isInteractive = targetEl.closest('a, button, [role="button"], input, textarea, .skill-pill, .education-card, .contact-link-card, .character-container');
+      const isInteractive = targetEl.closest('a, button, [role="button"], input, textarea, .skill-pill, .education-card, .contact-link-card, .btn');
       setIsHovering(!!isInteractive);
     };
 

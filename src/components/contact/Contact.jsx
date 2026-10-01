@@ -1,28 +1,16 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { personalInfo } from '../../data/portfolioData';
-import { useGaze } from '../../hooks/useGaze';
 import { GithubIcon, LinkedinIcon, LeetcodeIcon } from '../common/BrandIcons';
 import { Mail, ArrowUpRight, Copy, Check, Sparkles } from 'lucide-react';
 import './Contact.css';
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
-  const { setGazeTarget, clearGazeTarget, triggerGrin } = useGaze();
-
-  const handleLinkHover = (e, label) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setGazeTarget({
-      x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2,
-      label
-    });
-  };
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(personalInfo.email);
     setCopied(true);
-    triggerGrin('grin', 1400);
     setTimeout(() => setCopied(false), 2400);
   };
 
@@ -92,8 +80,6 @@ export default function Contact() {
                 type="button"
                 className={`btn font-ui copy-email-btn ${copied ? 'copied-btn' : 'btn-yellow'}`}
                 onClick={handleCopyEmail}
-                onMouseEnter={(e) => handleLinkHover(e, 'Copy Email')}
-                onMouseLeave={clearGazeTarget}
                 aria-label="Copy email address"
               >
                 {copied ? (
@@ -125,8 +111,6 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              onMouseEnter={(e) => handleLinkHover(e, item.label)}
-              onMouseLeave={clearGazeTarget}
             >
               <div className="contact-card-header">
                 <div className="contact-icon-box">{item.icon}</div>

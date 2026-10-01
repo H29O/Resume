@@ -1,15 +1,16 @@
 /* ==========================================================================
    HERO COMPONENT STYLES
-   Central visual statement with character anchor and bold typography
+   High-impact typography, centered hierarchy, balanced vertical rhythm
    ========================================================================== */
 
 .hero-section {
   min-height: 100vh;
-  padding-top: calc(var(--nav-height) + 12px);
-  padding-bottom: var(--space-xl);
+  padding-top: calc(var(--nav-height) + 24px);
+  padding-bottom: var(--space-2xl);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   position: relative;
   overflow: hidden;
   background-color: var(--color-bg-base);
@@ -31,27 +32,27 @@
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: 0.35;
 }
 
 .blob-yellow {
-  width: min(600px, 70vw);
-  height: min(600px, 70vw);
+  width: min(720px, 88vw);
+  height: min(480px, 60vw);
   background: var(--color-yellow);
-  top: 4%;
+  top: 46%;
   left: 50%;
-  transform: translateX(-50%);
-  opacity: 0.38;
-  filter: blur(90px);
+  transform: translate(-50%, -50%);
+  opacity: 0.35;
+  filter: blur(100px);
 }
 
 .blob-cobalt {
-  width: 380px;
-  height: 380px;
+  width: 360px;
+  height: 360px;
   background: var(--color-cobalt-light);
   bottom: 8%;
   right: 8%;
   opacity: 0.12;
+  filter: blur(90px);
 }
 
 .hero-grid-pattern {
@@ -70,64 +71,91 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   position: relative;
   z-index: 1;
+  width: 100%;
 }
 
-/* Character Stage — Bottom of character lands flush with top of name */
-.hero-character-stage {
-  margin-top: 0;
-  margin-bottom: 0;
+/* Typography & Content Block */
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Eyebrow Status Pill */
+.hero-eyebrow-wrapper {
+  margin-bottom: var(--space-md);
   display: flex;
   justify-content: center;
-  position: relative;
 }
 
-.hero-character-placeholder {
-  aspect-ratio: 1624 / 1496;
-  height: clamp(230px, 34vh, 380px);
-  width: auto;
-  max-width: min(85vw, 370px);
-  max-height: min(44vh, 390px);
-  visibility: hidden;
-  pointer-events: none;
+.hero-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-surface);
+  border: 1.5px solid var(--color-charcoal);
+  box-shadow: var(--shadow-tactile-sm);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--color-charcoal);
+  transition: transform var(--transition-fast);
 }
 
-@media (min-width: 1200px) and (min-height: 800px) {
-  .hero-character-placeholder {
-    height: clamp(260px, 36vh, 410px);
-    max-width: min(85vw, 400px);
-    max-height: min(46vh, 410px);
+.hero-status-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-tactile);
+}
+
+.status-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10B981;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+  animation: pulse-dot 2s infinite ease-out;
+}
+
+@keyframes pulse-dot {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
   }
 }
 
-@media (max-width: 1024px) {
-  .hero-character-placeholder {
-    height: clamp(210px, 30vh, 300px);
-    max-width: min(80vw, 300px);
-  }
+.status-pill-sep {
+  color: var(--color-charcoal-subtle);
+  margin: 0 2px;
 }
 
-@media (max-width: 768px) {
-  .hero-character-placeholder {
-    height: clamp(190px, 28vh, 260px);
-    max-width: min(78vw, 260px);
-  }
+.status-pill-highlight {
+  color: var(--color-cobalt);
+  font-weight: 700;
 }
 
-/* Typography & Content */
-.hero-content {
-  max-width: 820px;
-  margin: 0 auto;
-  margin-top: -8px; /* Perfectly aligns bottom of character with top of HEET OSWAL */
+/* Main Display Title */
+.hero-title-group {
+  margin-bottom: var(--space-xs);
 }
 
 .hero-name {
-  font-size: clamp(2.8rem, 6.2vw, 5.2rem);
-  line-height: 0.95;
+  font-size: clamp(3.2rem, 7.8vw, 6.2rem);
+  line-height: 0.94;
   color: var(--color-charcoal);
-  margin-bottom: 6px;
+  margin-bottom: 12px;
   letter-spacing: -0.02em;
   text-transform: uppercase;
 }
@@ -136,13 +164,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
 }
 
 .hero-role {
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
   font-weight: 600;
   color: var(--color-charcoal-muted);
   letter-spacing: 0.05em;
@@ -152,22 +180,52 @@
 .hero-role-separator {
   color: var(--color-yellow-dark);
   font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .hero-role-accent {
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
   font-weight: 700;
   color: var(--color-cobalt);
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
+/* Bio Paragraph */
 .hero-bio {
-  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  font-size: clamp(1.02rem, 1.45vw, 1.18rem);
   color: var(--color-charcoal-muted);
-  max-width: 640px;
-  margin: 0 auto var(--space-lg);
-  line-height: 1.6;
+  max-width: 660px;
+  margin: 0 auto var(--space-md);
+  line-height: 1.65;
+}
+
+/* Competencies Strip */
+.hero-competencies-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 auto var(--space-xl);
+  padding: 8px 20px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-pill);
+}
+
+.competency-tag {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--color-charcoal);
+  letter-spacing: 0.06em;
+}
+
+.competency-sep {
+  color: var(--color-yellow-dark);
+  font-size: 0.95rem;
 }
 
 /* Action Buttons */
@@ -183,13 +241,13 @@
   background: var(--color-yellow);
 }
 
-.hero-easter-egg-btn {
-  border-style: dashed;
+.hero-resume-btn {
+  background: var(--color-bg-surface);
 }
 
 /* Scroll Cue */
 .hero-scroll-cue {
-  margin-top: var(--space-xl);
+  margin-top: clamp(var(--space-xl), 6vh, var(--space-3xl));
   display: flex;
   justify-content: center;
 }
@@ -200,7 +258,7 @@
   align-items: center;
   gap: 6px;
   color: var(--color-charcoal-muted);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   transition: all var(--transition-fast);
@@ -238,32 +296,69 @@
   }
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
+  .hero-section {
+    padding-top: calc(var(--nav-height) + 16px);
+    padding-bottom: var(--space-xl);
+    min-height: auto;
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
+
   .hero-name {
-    font-size: clamp(1.8rem, 8.2vw, 2.4rem);
+    font-size: clamp(2.4rem, 10vw, 3.4rem);
     letter-spacing: -0.01em;
   }
+
+  .hero-status-pill {
+    font-size: 0.78rem;
+    padding: 5px 12px;
+  }
+
   .hero-role-wrapper {
     flex-direction: column;
     gap: 4px;
   }
+
   .hero-role-separator {
     display: none;
   }
+
   .hero-role {
-    font-size: 0.76rem;
-    letter-spacing: 0.02em;
-    padding: 0 8px;
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
   }
+
   .hero-role-accent {
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     letter-spacing: 0.04em;
   }
+
+  .hero-bio {
+    font-size: 0.98rem;
+    padding: 0 8px;
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-competencies-strip {
+    font-size: 0.76rem;
+    padding: 6px 12px;
+    gap: 6px;
+    margin-bottom: var(--space-lg);
+  }
+
   .hero-actions {
     flex-direction: column;
     width: 100%;
+    gap: 12px;
   }
+
   .hero-actions .btn {
     width: 100%;
+  }
+
+  .hero-scroll-cue {
+    margin-top: var(--space-xl);
   }
 }

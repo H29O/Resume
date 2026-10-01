@@ -256,6 +256,11 @@ a {
 }
 
 @media (max-width: 768px) {
+  .container,
+  .container-wide {
+    padding: 0 var(--space-md);
+  }
+
   .section-wrapper {
     padding: var(--space-3xl) 0;
   }

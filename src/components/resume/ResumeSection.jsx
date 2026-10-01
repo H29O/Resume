@@ -1,22 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { personalInfo } from '../../data/portfolioData';
-import { useGaze } from '../../hooks/useGaze';
 import { FileText, Download, Eye, ExternalLink, X } from 'lucide-react';
 import './ResumeSection.css';
 
 export default function ResumeSection() {
   const [modalOpen, setModalOpen] = useState(false);
-  const { setGazeTarget, clearGazeTarget, triggerGrin } = useGaze();
-
-  const handleHover = (e, label) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setGazeTarget({
-      x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2,
-      label
-    });
-  };
 
   return (
     <section className="resume-section section-wrapper" id="resume">
@@ -39,8 +28,6 @@ export default function ResumeSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          onMouseEnter={(e) => handleHover(e, 'Resume Document')}
-          onMouseLeave={clearGazeTarget}
         >
           <div className="resume-card-left">
             <div className="resume-doc-icon-wrapper">
@@ -65,12 +52,7 @@ export default function ResumeSection() {
             <button
               type="button"
               className="btn btn-yellow font-ui"
-              onClick={() => {
-                setModalOpen(true);
-                triggerGrin('grin', 1200);
-              }}
-              onMouseEnter={(e) => handleHover(e, 'VIEW RESUME')}
-              onMouseLeave={clearGazeTarget}
+              onClick={() => setModalOpen(true)}
             >
               <Eye size={18} />
               <span>VIEW RESUME</span>
@@ -80,8 +62,6 @@ export default function ResumeSection() {
               href={personalInfo.resumePath}
               download="Heet_Oswal_Resume.pdf"
               className="btn btn-cobalt font-ui"
-              onMouseEnter={(e) => handleHover(e, 'DOWNLOAD RESUME')}
-              onMouseLeave={clearGazeTarget}
             >
               <Download size={18} />
               <span>DOWNLOAD PDF</span>

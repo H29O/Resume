@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="footer-left">
           <span className="footer-brand font-display">HEET OSWAL</span>
           <p className="footer-subtext font-body">
-            B.Tech Information Technology Student at PCCOE. Built with intentional craftsmanship, Fontshare Array & Khand, and interactive eye-tracking.
+            B.Tech Information Technology Student at PCCOE. Built with intentional craftsmanship, Fontshare Array & Khand typography, and responsive modern engineering.
           </p>
         </div>
 

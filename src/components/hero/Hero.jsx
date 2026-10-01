@@ -1,25 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { personalInfo } from '../../data/portfolioData';
-import { useGaze } from '../../hooks/useGaze';
-import { ArrowDown, Code2 } from 'lucide-react';
+import { ArrowDown, Code2, FileText, Sparkles } from 'lucide-react';
 import './Hero.css';
 
 export default function Hero() {
-  const { setGazeTarget, clearGazeTarget } = useGaze();
-
-  const handleElementHover = (e, label) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setGazeTarget({
-      x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2,
-      label
-    });
-  };
-
   return (
     <section className="hero-section" id="hero">
-      {/* Subtle Environmental Backdrop Accents */}
+      {/* Environmental Backdrop Accents */}
       <div className="hero-background-shapes" aria-hidden="true">
         <div className="shape-blob blob-yellow" />
         <div className="shape-blob blob-cobalt" />
@@ -27,19 +15,26 @@ export default function Hero() {
       </div>
 
       <div className="container hero-container">
-        {/* Central Visual Focus: Animated Character Anchor */}
-        <div
-          className="hero-character-stage"
-          id="hero-character-stage"
-        >
-          <div id="hero-character-anchor" className="hero-character-placeholder" aria-hidden="true" />
-        </div>
-
-        {/* Core Typography & Identity */}
         <div className="hero-content">
+          {/* Status Eyebrow Badge */}
+          <motion.div
+            className="hero-eyebrow-wrapper"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="hero-status-pill font-ui">
+              <span className="status-live-dot" />
+              <span>AVAILABLE FOR OPPORTUNITIES</span>
+              <span className="status-pill-sep">•</span>
+              <span className="status-pill-highlight">PUNE, IN</span>
+            </div>
+          </motion.div>
+
+          {/* Core Typographic Statement */}
           <motion.div
             className="hero-title-group"
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
@@ -47,37 +42,52 @@ export default function Hero() {
               {personalInfo.name}
             </h1>
             <div className="hero-role-wrapper">
-              <p className="hero-role font-ui">
+              <span className="hero-role font-ui">
                 B.Tech Information Technology Student
-              </p>
+              </span>
               <span className="hero-role-separator">•</span>
-              <p className="hero-role-accent font-ui">
+              <span className="hero-role-accent font-ui">
                 Full-Stack Developer
-              </p>
+              </span>
             </div>
           </motion.div>
 
+          {/* Bio Narrative */}
           <motion.p
             className="hero-bio font-body"
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.32 }}
+            transition={{ duration: 0.5, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
           >
             Engineering robust backend microservices with Java Spring Boot, developing responsive React applications, and architecting task dependency analytics.
           </motion.p>
 
-          {/* Quick CTA Actions */}
+          {/* Quick Technical Competencies Strip */}
+          <motion.div
+            className="hero-competencies-strip"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.42, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span className="competency-tag font-ui">JAVA SPRING BOOT</span>
+            <span className="competency-sep">•</span>
+            <span className="competency-tag font-ui">REACT & JAVASCRIPT</span>
+            <span className="competency-sep">•</span>
+            <span className="competency-tag font-ui">POSTGRESQL</span>
+            <span className="competency-sep">•</span>
+            <span className="competency-tag font-ui">PCCOE '26 (8.21 CGPA)</span>
+          </motion.div>
+
+          {/* Primary Call-to-Actions */}
           <motion.div
             className="hero-actions"
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.44 }}
+            transition={{ duration: 0.5, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
             <a
               href="#work"
               className="btn btn-yellow font-ui hero-cta"
-              onMouseEnter={(e) => handleElementHover(e, 'EXPLORE WORK')}
-              onMouseLeave={clearGazeTarget}
             >
               <Code2 size={18} />
               <span>EXPLORE WORK</span>
@@ -86,10 +96,19 @@ export default function Hero() {
             <a
               href="#contact"
               className="btn btn-cobalt font-ui"
-              onMouseEnter={(e) => handleElementHover(e, 'GET IN TOUCH')}
-              onMouseLeave={clearGazeTarget}
             >
+              <Sparkles size={16} />
               <span>GET IN TOUCH</span>
+            </a>
+
+            <a
+              href={personalInfo.resumePath}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline font-ui hero-resume-btn"
+            >
+              <FileText size={17} />
+              <span>VIEW RESUME</span>
             </a>
           </motion.div>
         </div>
@@ -99,14 +118,12 @@ export default function Hero() {
           className="hero-scroll-cue"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.58 }}
+          transition={{ duration: 0.6, delay: 0.65 }}
         >
           <a
             href="#about"
             className="scroll-cue-link font-ui"
             aria-label="Scroll down to About section"
-            onMouseEnter={(e) => handleElementHover(e, 'EXPLORE DOWN')}
-            onMouseLeave={clearGazeTarget}
           >
             <span className="scroll-cue-text">EXPLORE</span>
             <div className="scroll-arrow-box">

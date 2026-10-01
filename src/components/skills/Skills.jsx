@@ -1,23 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { skillsData } from '../../data/portfolioData';
-import { useGaze } from '../../hooks/useGaze';
 import { Terminal, Database, Wrench, Globe, Sparkles } from 'lucide-react';
 import './Skills.css';
 
 export default function Skills() {
   const [selectedSkill, setSelectedSkill] = useState(skillsData.categories[0].skills[0]);
-  const { setGazeTarget, clearGazeTarget } = useGaze();
-
-  const handleSkillHover = (e, skill) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setGazeTarget({
-      x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2,
-      label: skill.name
-    });
-    setSelectedSkill(skill);
-  };
 
   const getCategoryIcon = (name) => {
     switch (name) {
@@ -70,8 +58,7 @@ export default function Skills() {
                         key={sIdx}
                         type="button"
                         className={`skill-pill font-ui ${isSelected ? 'skill-pill-active' : ''}`}
-                        onMouseEnter={(e) => handleSkillHover(e, skill)}
-                        onMouseLeave={clearGazeTarget}
+                        onMouseEnter={() => setSelectedSkill(skill)}
                         onClick={() => setSelectedSkill(skill)}
                         aria-pressed={isSelected}
                       >

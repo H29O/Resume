@@ -1,22 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { educationData, personalInfo } from '../../data/portfolioData';
-import { useGaze } from '../../hooks/useGaze';
 import { GraduationCap, Award, Terminal } from 'lucide-react';
 import './About.css';
 
 export default function About() {
-  const { setGazeTarget, clearGazeTarget } = useGaze();
-
-  const handleCardHover = (e, label) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setGazeTarget({
-      x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2,
-      label
-    });
-  };
-
   return (
     <section className="about-section section-wrapper" id="about">
       <div className="container">
@@ -39,8 +27,6 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            onMouseEnter={(e) => handleCardHover(e, 'Editorial Statement')}
-            onMouseLeave={clearGazeTarget}
           >
             <div className="editorial-header">
               <Terminal size={22} className="editorial-icon" />
@@ -84,8 +70,6 @@ export default function About() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: index * 0.15 }}
-                  onMouseEnter={(e) => handleCardHover(e, item.degree)}
-                  onMouseLeave={clearGazeTarget}
                 >
                   <div className="education-card-top">
                     <span className="education-period font-ui">{item.period}</span>

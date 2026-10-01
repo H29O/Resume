@@ -1,23 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { projectsData } from '../../data/portfolioData';
-import { useGaze } from '../../hooks/useGaze';
 import { GithubIcon } from '../common/BrandIcons';
 import { ArrowRight } from 'lucide-react';
 import './Projects.css';
 
 export default function Projects() {
-  const { setGazeTarget, clearGazeTarget } = useGaze();
-
-  const handleProjectHover = (e, project) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setGazeTarget({
-      x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2,
-      label: project.title
-    });
-  };
-
   return (
     <section className="projects-section section-wrapper" id="work">
       <div className="container">
@@ -42,8 +30,6 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7, delay: idx * 0.15 }}
-              onMouseEnter={(e) => handleProjectHover(e, project)}
-              onMouseLeave={clearGazeTarget}
             >
               <div className="project-grid">
                 {/* Left Column: Metadata & Narrative */}
